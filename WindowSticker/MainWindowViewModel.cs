@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ReactiveUI;
-using System.Linq;
 using System.Reactive.Linq;
 using WindowSticker.ViewModels;
 using WindowSticker.Services;
@@ -29,7 +28,13 @@ namespace WindowSticker
         public WindowLayoutGroup SelectedLayout 
         {
             get { return _selectedLayout; }
-            set { this.RaiseAndSetIfChanged(ref _selectedLayout, value); }
+            set 
+            {
+                if (_selectedLayout != null)
+                    _selectedLayout.IsEditingName = false;
+
+                this.RaiseAndSetIfChanged(ref _selectedLayout, value); 
+            }
         }
 
         private WindowManagerService _windowService = new WindowManagerService();
@@ -38,7 +43,7 @@ namespace WindowSticker
         {
             SavedLayouts = new ReactiveList<WindowLayoutGroup>();
 
-            AddLayoutCmd = ReactiveCommand.Create();
+            AddLayoutCmd = ReactiveCommand.Create(SavedLayouts.CountChanged.Select(count => count < 4).StartWith(true));
             AddLayoutCmd.Subscribe(_ => SaveLayout());
 
             RestoreLayoutCmd = ReactiveCommand.Create(this.WhenAnyValue(vm => vm.SelectedLayout).Select(layout => layout != null));
