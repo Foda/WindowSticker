@@ -43,16 +43,9 @@ namespace WindowSticker
 
         void TrayIcon_Invoked()
         {
-            if (this.IsWindowVisible())
-            {
-                //this.HideWithAnimation();
-            }
-            else
-            {
-                UpdateTheme();
-                UpdateWindowPosition();
-                this.ShowwithAnimation();
-            }
+            UpdateTheme();
+            UpdateWindowPosition();
+            this.ShowwithAnimation();
         }
 
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
@@ -92,8 +85,11 @@ namespace WindowSticker
 
         private void UpdateTheme()
         {
-            ThemeService.UpdateThemeResources(Resources);
-            this.EnableBlur();
+            if (Environment.OSVersion.Version.Minor > 1 || Environment.OSVersion.Version.Major > 6)
+            {
+                ThemeService.UpdateThemeResources(Resources);
+                this.EnableBlur();
+            }
             UpdateWindowPosition();
         }
 

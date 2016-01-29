@@ -12,11 +12,11 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <ext:InverseBoolVisibilityConverter x:Key="InverseBoolVisibilityConverter"/>
         
-        <SolidColorBrush x:Key="WindowForeground" Color="Black" />
-        <SolidColorBrush x:Key="WindowBackground" Color="White" />
+        <SolidColorBrush x:Key="WindowForeground" Color="White" />
+        <SolidColorBrush x:Key="WindowBackground" Color="#FF1F1F1F" />
 
-        <SolidColorBrush x:Key="SelectedBackgroundBrush" Color="#585859" />
-        <SolidColorBrush x:Key="SelectedBackgroundBrushLight" Color="#585859" />
+        <SolidColorBrush x:Key="SelectedBackgroundBrush" Color="#FF0089BA" />
+        <SolidColorBrush x:Key="SelectedBackgroundBrushLight" Color="#FF5CD3FF" />
         <SolidColorBrush x:Key="HoverBackgroundBrushLight" Color="#91E0FF" />
         <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#888" />        
 
