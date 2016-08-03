@@ -10,7 +10,11 @@ namespace WindowSticker.ViewModels
 {
     public class WindowLayoutGroup : ReactiveObject
     {
-        public List<SavedWindow> SavedWindows { get; private set; }
+        public List<SavedWindow> SavedWindows 
+        { 
+            get; 
+            private set; 
+        }
 
         public string SavedDetails
         {
